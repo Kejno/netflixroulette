@@ -45,7 +45,7 @@ module.exports = {
       {
         test: /\.(jsx?|tsx?)$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: ['ts-loader'],
       },
       {
         test: /\.html$/,
@@ -67,7 +67,7 @@ module.exports = {
             options: {
               importLoaders: 1,
               modules: true,
-              localIdentName: '[name]_[local][hash:base64:5]',
+              localIdentName: '[name]_[local]_[hash:base64:5]',
             },
           },
           { loader: 'sass-loader' },
