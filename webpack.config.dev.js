@@ -13,7 +13,7 @@ module.exports = {
   },
   resolve: {
     modules: [path.resolve(__dirname, './src'), 'node_modules'],
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   watch: true,
   devtool: 'source-map',
@@ -43,6 +43,11 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(jsx?|tsx?)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
+      {
         test: /\.html$/,
         exclude: /node_modules/,
         use: [
@@ -53,7 +58,7 @@ module.exports = {
         ],
       },
       {
-        test: /\.scss$/,
+        test: /\.(scss|css)$/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
           'css-loader',
