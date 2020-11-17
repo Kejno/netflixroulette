@@ -13,7 +13,7 @@ module.exports = {
   },
   resolve: {
     modules: [path.resolve(__dirname, './src'), 'node_modules'],
-    extensions: ['.js', '.jsx', '.json'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   devServer: {
     contentBase: path.join(__dirname, 'build'),
@@ -29,7 +29,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['build']),
     new HtmlWebpackPlugin({
-      title: 'PiewNews',
+      title: 'Movies app',
       template: 'src/index.html',
       filename: 'index.html',
       minify: { collapseWhitespace: true },
@@ -42,12 +42,6 @@ module.exports = {
   module: {
     rules: [
       {
-        enforce: 'pre',
-        test: /\.(js)$/,
-        exclude: /node_modules/,
-        use: 'eslint-loader',
-      },
-      {
         test: /\.html$/,
         exclude: /node_modules/,
         use: [
@@ -58,18 +52,23 @@ module.exports = {
         ],
       },
       {
-        test: /\.js$/,
+        test: /\.(jsx?|tsx?)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        use: ['ts-loader'],
       },
       {
-        test: /\.scss$/,
+        test: /\.(css|scss)$/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
-          'css-loader',
-          'sass-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true,
+              localIdentName: '[name]_[local]_[hash:base64:5]',
+            },
+          },
+          { loader: 'sass-loader' },
         ],
       },
       {
