@@ -58,10 +58,17 @@ module.exports = {
         ],
       },
       {
-        test: /\.(scss|css)$/,
+        test: /\.(css|scss)$/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true,
+              localIdentName: '[name]_[local][hash:base64:5]',
+            },
+          },
           'sass-loader',
         ],
       },
