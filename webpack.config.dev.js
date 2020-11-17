@@ -61,6 +61,7 @@ module.exports = {
         test: /\.(css|scss)$/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
+          { loader: 'css-modules-typescript-loader' },
           {
             loader: 'css-loader',
             options: {
@@ -69,7 +70,7 @@ module.exports = {
               localIdentName: '[name]_[local][hash:base64:5]',
             },
           },
-          'sass-loader',
+          { loader: 'sass-loader' },
         ],
       },
       {
