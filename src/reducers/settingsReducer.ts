@@ -16,7 +16,7 @@ const initialState = {
 
 type InitialStateType = typeof initialState;
 
-export const sortTabsReducer = (
+export const settingsReducer = (
   state = initialState,
   action: optionsActionsTypes
 ): InitialStateType => {

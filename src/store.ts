@@ -1,14 +1,16 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+import { searchReducer } from './reducers/searchReducer';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { movieListReducer } from './reducers/movieReducer';
-import { sortTabsReducer } from './reducers/sortTabsReducer';
+import { settingsReducer } from './reducers/settingsReducer';
 
 const middleware = [thunk];
 
 const reducer = combineReducers({
   movieList: movieListReducer,
-  optsSortTabs: sortTabsReducer,
+  settings: settingsReducer,
+  search: searchReducer,
 });
 
 const initialState = {};

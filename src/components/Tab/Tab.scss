@@ -1,0 +1,13 @@
+.tabContainer {
+  display: flex;
+  list-style-type: none;
+}
+
+.tabItem {
+  padding: 0 5px;
+  cursor: pointer;
+}
+
+.activeTabItem {
+  color: #f44336;
+}

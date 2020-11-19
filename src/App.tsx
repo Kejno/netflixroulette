@@ -6,20 +6,20 @@ import HomePage from './pages/Home/HomePage';
 import FilmDetailsPage from './pages/Details/FilmDetailsPage';
 
 import cls from './App.scss';
-import ListContainer from './components/ListContainer/ListContainer';
 
 const App = () => {
-  console.log(cls);
   return (
-    <Router>
-      <Header />
-      <main>
-        <Route path="/" component={HomePage} exact />
-        <Route path="/films/:id" component={FilmDetailsPage} />
-        <ListContainer />
-      </main>
-      <Footer />
-    </Router>
+    <div className={cls.mainContainer}>
+      <Router>
+        <Header />
+        <main>
+          <Route path="/" component={HomePage} exact />
+          <Route path="/search/:searchParams" component={HomePage} />
+          <Route path="/films/:id" component={FilmDetailsPage} />
+        </main>
+        <Footer />
+      </Router>
+    </div>
   );
 };
 

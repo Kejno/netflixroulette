@@ -1,0 +1,9 @@
+.movieListContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movieItem {
+  width: calc((100% - 200px) / 4);
+  margin: 10px 25px;
+}

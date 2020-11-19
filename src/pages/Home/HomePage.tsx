@@ -1,19 +1,8 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import { listMovie } from '../../actions/movieActions';
+import ListContainer from '../../components/ListContainer/ListContainer';
 
 const HomePage = () => {
-  const dispatch = useDispatch();
-
-  // const movieList = useSelector((state: any) => state.movieList);
-
-  // const { loading, error, movies } = movieList;
-
-  // useEffect(() => {
-  //   dispatch(listMovie());
-  // }, [dispatch]);
-
   return (
     <div>
       <SearchBar
@@ -24,6 +13,7 @@ const HomePage = () => {
           console.log(e.target.value)
         }
       />
+      <ListContainer />
     </div>
   );
 };
