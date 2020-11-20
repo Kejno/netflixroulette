@@ -1,9 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+} from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import HomePage from './pages/Home/HomePage';
 import FilmDetailsPage from './pages/Details/FilmDetailsPage';
+import ErrorPage from './pages/Error/ErrorPage';
 
 import cls from './App.scss';
 
@@ -13,9 +19,12 @@ const App = () => {
       <Router>
         <Header />
         <main>
-          <Route path="/" component={HomePage} exact />
-          <Route path="/search/:searchParams" component={HomePage} />
-          <Route path="/films/:id" component={FilmDetailsPage} />
+          <Switch>
+            <Route path="/" component={HomePage} exact />
+            <Route path="/search/:searchParams" component={HomePage} />
+            <Route path="/films/:id" component={FilmDetailsPage} />
+            <Route render={() => <h1>NO FOUND</h1>} />
+          </Switch>
         </main>
         <Footer />
       </Router>

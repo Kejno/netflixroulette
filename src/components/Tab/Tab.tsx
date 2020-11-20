@@ -5,20 +5,29 @@ import cls from './Tab.scss';
 
 interface TabProps {
   onChangeTab(key: number): void;
+  activeTab: any;
 }
 
-const Tab: React.FC<TabProps> = ({ onChangeTab }) => {
+const Tab: React.FC<TabProps> = ({ onChangeTab, activeTab }) => {
   const { tab } = tabSortOptions;
 
-  const { tabItem, tabContainer } = cls;
+  const { tabItem, tabContainer, activeTabItem } = cls;
 
   return (
     <ul className={tabContainer}>
-      {tab.map((opt, key) => (
-        <li className={tabItem} key={key} onClick={() => onChangeTab(key)}>
-          {opt}
-        </li>
-      ))}
+      {Object.keys(tab).map((opt, key) => {
+        const active = Object.values(tab)[key] === activeTab && activeTabItem;
+
+        return (
+          <li
+            className={[tabItem, active].join(' ')}
+            key={key}
+            onClick={() => onChangeTab(key)}
+          >
+            {opt.toUpperCase()}
+          </li>
+        );
+      })}
     </ul>
   );
 };

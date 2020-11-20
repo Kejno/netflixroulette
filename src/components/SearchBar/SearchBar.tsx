@@ -1,7 +1,8 @@
 import React, { FormEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { searchParams } from '../../actions/searchActions';
+import { listMovie } from '../../actions/movieActions';
 import cls from './SearchBar.scss';
 
 interface FormProps {
@@ -9,14 +10,22 @@ interface FormProps {
   placeholder: string;
   buttonName: string;
   onSubmit(e: React.SyntheticEvent): void;
+  history: any;
 }
 
-const SearchBar: React.FC<FormProps> = ({ title, placeholder, buttonName }) => {
+const SearchBar: React.FC<FormProps> = ({
+  title,
+  placeholder,
+  buttonName,
+  history,
+}) => {
   const dispatch = useDispatch();
   const search = useSelector((state: any) => state.search);
 
   const searchHandler = (e: FormEvent) => {
     e.preventDefault();
+    dispatch(listMovie(search));
+    history.push({ pathname: `/search/${urlParams}` });
   };
 
   const urlParams = encodeURIComponent(`Search ${search.search}`);
@@ -30,11 +39,9 @@ const SearchBar: React.FC<FormProps> = ({ title, placeholder, buttonName }) => {
         placeholder={placeholder}
         onChange={(e) => dispatch(searchParams(e.target.value))}
       />
-      <Link to={`/search/${urlParams}`}>
-        <button className={cls.searchButton} type="submit">
-          {buttonName}
-        </button>
-      </Link>
+      <button className={cls.searchButton} type="submit">
+        {buttonName}
+      </button>
     </form>
   );
 };

@@ -10,7 +10,7 @@ const { sort, tab, sortOrder } = tabSortOptions;
 
 const initialState = {
   sortBy: sort[0],
-  filter: tab[0],
+  filter: Object.values(tab)[0],
   sortOrder: sortOrder[1],
 };
 

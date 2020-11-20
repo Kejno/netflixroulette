@@ -1,17 +1,11 @@
 import axios from 'axios';
 import { BASE_URL } from '../constants/mainConstants';
-
+import { geSearchParamsFromObj } from '../utils/commonUtils';
 import {
   MOVIE_LIST_REQUEST,
   MOVIE_LIST_SUCCESS,
   MOVIE_LIST_FAIL,
 } from '../constants/movieConstants';
-
-const geSearchParamsFromObj = (opts: any) => {
-  return Object.entries(opts)
-    .map((value) => value.join('='))
-    .join('&');
-};
 
 export const listMovie = (opts: any = {}) => async (dispatch: any) => {
   const searchParams = geSearchParamsFromObj(opts);

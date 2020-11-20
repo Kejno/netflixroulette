@@ -6,6 +6,7 @@ import {
   changeSortOtps,
   changeFilterOpts,
 } from '../../actions/settingsActions';
+import Loader from '../Loader/Loader';
 import Sort from '../Sort/Sort';
 import Tab from '../Tab/Tab';
 import MovieList from '../MovieList/MovieList';
@@ -33,8 +34,9 @@ const ListContainer = () => {
       <div className={cls.filterWrapp}>
         <Tab
           onChangeTab={(key) => {
-            dispatch(changeFilterOpts(tab[key]));
+            dispatch(changeFilterOpts(Object.values(tab)[key]));
           }}
+          activeTab={optionsList.filter}
         />
         <Sort
           onChange={(e) => {
@@ -44,7 +46,7 @@ const ListContainer = () => {
       </div>
 
       {loading ? (
-        <div>Loading...</div>
+        <Loader />
       ) : error ? (
         <div>Error</div>
       ) : (

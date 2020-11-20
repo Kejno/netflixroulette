@@ -2,10 +2,11 @@ import React from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import ListContainer from '../../components/ListContainer/ListContainer';
 
-const HomePage = () => {
+const HomePage = ({ history }: any) => {
   return (
     <div>
       <SearchBar
+        history={history}
         title="Find your movie"
         placeholder="What do you want to watch?"
         buttonName="Search"

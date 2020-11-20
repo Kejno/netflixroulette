@@ -10,7 +10,7 @@ export const changeSortOtps = (newOpts: string) => {
   };
 };
 
-export const changeFilterOpts = (newOpts: string) => {
+export const changeFilterOpts = (newOpts: any) => {
   return {
     type: NEW_FILTER_OPTIONS,
     payload: newOpts,

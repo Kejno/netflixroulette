@@ -10,7 +10,7 @@ type changeSortOptsActionType = {
 
 type changeFilterOptsActionType = {
   type: typeof NEW_FILTER_OPTIONS;
-  payload: string;
+  payload: string | null;
 };
 
 export type optionsActionsTypes =

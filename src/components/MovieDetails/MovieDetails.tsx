@@ -11,16 +11,17 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie }) => {
 
   return (
     <>
-      <img className={cls.movieImg} src={poster_path}></img>
+      <div>
+        <img className={cls.movieImg} src={poster_path}></img>
+      </div>
       <div className={cls.movieTitleWrapp}>
         <div>
           <div className={cls.movieTitle}>{title}</div>
-          <div className={cls.movieGenres}>{genres}</div>
+          <div className={cls.movieGenres}>{genres.join(', ')}</div>
         </div>
-        <div>
-          <span className={cls.movieReleaseDate}>
-            {new Date(release_date).getFullYear()}
-          </span>
+
+        <div className={cls.movieReleaseDate}>
+          {new Date(release_date).getFullYear()}
         </div>
       </div>
     </>
