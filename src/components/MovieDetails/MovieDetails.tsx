@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import MenuCardMovie from '../MenuCardMovie/MenuCardMovie';
 
 import cls from './MovieDetails.scss';
 
@@ -7,11 +8,27 @@ interface MovieDetailsProps {
 }
 
 const MovieDetails: React.FC<MovieDetailsProps> = ({ movie }) => {
-  const { title, release_date, poster_path, genres } = movie;
+  const { title, release_date, poster_path, genres, id } = movie;
+
+  const [opernMenuCard, setOpenMenuCard] = useState(false);
+
+  const onToggleMenuCard = () => {
+    setOpenMenuCard((state) => !state);
+  };
 
   return (
     <>
-      <div>
+      <div className={cls.wrappImg}>
+        <div className={cls.menuWrapper} onClick={onToggleMenuCard}>
+          <div className={cls.dotsMenu}></div>
+        </div>
+
+        {opernMenuCard && (
+          <div className={cls.menuCardMovie}>
+            <MenuCardMovie onToggleMenuCard={onToggleMenuCard} id={id} />
+          </div>
+        )}
+
         <img className={cls.movieImg} src={poster_path}></img>
       </div>
       <div className={cls.movieTitleWrapp}>

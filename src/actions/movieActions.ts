@@ -5,9 +5,10 @@ import {
   MOVIE_LIST_REQUEST,
   MOVIE_LIST_SUCCESS,
   MOVIE_LIST_FAIL,
+  DELETE_MOVIE_ITEM,
 } from '../constants/movieConstants';
 
-export const listMovie = (opts: any = {}) => async (dispatch: any) => {
+export const getMovies = (opts: any = {}) => async (dispatch: any) => {
   const searchParams = geSearchParamsFromObj(opts);
 
   try {
@@ -22,4 +23,11 @@ export const listMovie = (opts: any = {}) => async (dispatch: any) => {
       payload: error.message,
     });
   }
+};
+
+export const deleteMovie = (id: number) => (dispatch: any) => {
+  dispatch({
+    type: DELETE_MOVIE_ITEM,
+    payload: id,
+  });
 };

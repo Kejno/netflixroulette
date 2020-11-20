@@ -2,7 +2,7 @@ import React, { FormEvent } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { searchParams } from '../../actions/searchActions';
-import { listMovie } from '../../actions/movieActions';
+import { getMovies } from '../../actions/movieActions';
 import cls from './SearchBar.scss';
 
 interface FormProps {
@@ -24,7 +24,7 @@ const SearchBar: React.FC<FormProps> = ({
 
   const searchHandler = (e: FormEvent) => {
     e.preventDefault();
-    dispatch(listMovie(search));
+    dispatch(getMovies(search));
     history.push({ pathname: `/search/${urlParams}` });
   };
 

@@ -1,0 +1,43 @@
+.menuCardWrapper {
+  position: relative;
+  width: 150px;
+  height: 100px;
+  background-color: #666666;
+  color: beige;
+}
+
+.menuCardClose {
+  height: 20px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+.menuCardClose:hover {
+  opacity: 1;
+  transition: all 0.6s;
+}
+.menuCardClose:before,
+.menuCardClose:after {
+  position: absolute;
+  top: 4px;
+  right: 10px;
+  content: ' ';
+  height: 15px;
+  width: 2px;
+  background-color: rgb(255, 255, 255);
+}
+.menuCardClose:before {
+  transform: rotate(45deg);
+}
+.menuCardClose:after {
+  transform: rotate(-45deg);
+}
+
+.menuCardItem {
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.menuCardItem:hover {
+  background-color: #f44336;
+  transition: all 0.6s;
+}

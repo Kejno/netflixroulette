@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { listMovie } from '../../actions/movieActions';
+import { getMovies } from '../../actions/movieActions';
 import { tabSortOptions } from '../../constants/mainConstants';
 import {
   changeSortOtps,
@@ -26,7 +26,7 @@ const ListContainer = () => {
   const { tab } = tabSortOptions;
 
   useEffect(() => {
-    dispatch(listMovie({ ...optionsList, ...searchParams }));
+    dispatch(getMovies({ ...optionsList, ...searchParams }));
   }, [optionsList]);
 
   return (

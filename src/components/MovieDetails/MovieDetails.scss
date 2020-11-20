@@ -22,3 +22,79 @@
   font-size: 0.7rem;
   margin: 10px 5px;
 }
+
+.wrappImg {
+  position: relative;
+}
+
+.movieImg {
+  min-height: 28vw;
+}
+
+.movieImg:before {
+  content: ' ';
+  display: block;
+
+  position: absolute;
+  top: -10px;
+  left: 0;
+  height: calc(100% + 10px);
+  width: 100%;
+  background-color: rgb(230, 230, 230);
+  border: 2px dotted rgb(200, 200, 200);
+  border-radius: 5px;
+}
+
+.movieImg:after {
+  content: '\f127'' Битая картинка ' attr(alt);
+  display: block;
+  font-size: 16px;
+  font-style: normal;
+  font-family: FontAwesome;
+  color: rgb(100, 100, 100);
+
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.menuItem {
+  width: 30px;
+  height: 30px;
+  background-color: #666666;
+  border-radius: 50%;
+}
+
+.menuWrapper {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  background-color: #666666;
+  border-radius: 50%;
+  right: 5px;
+  top: 5px;
+  opacity: 0.5;
+}
+
+.menuWrapper:hover {
+  transition: all 0.8s;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.dotsMenu:after {
+  content: '\2807';
+  font-size: 25px;
+  color: #ffffff;
+  position: absolute;
+  right: 2px;
+  top: -2px;
+}
+
+.menuCardMovie {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
