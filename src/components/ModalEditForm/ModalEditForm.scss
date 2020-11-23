@@ -1,0 +1,27 @@
+.mainWrapp {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.mainWrapp input,
+.mainWrapp select {
+  background-color: #666666;
+  border: none;
+  border-radius: 5px 5px;
+  outline: none;
+  color: #ffffff;
+  padding: 0.5rem;
+  width: 27rem;
+}
+.mainWrapp select {
+  width: 28rem;
+}
+.itemWrapp {
+  margin: 0.5rem 1rem;
+}
+.itemTitle {
+  display: block;
+  color: #f44336;
+  padding-bottom: 0.3rem;
+}
+.movieId {
+  color: #ffffff;
+}

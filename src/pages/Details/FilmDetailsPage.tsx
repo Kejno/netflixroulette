@@ -1,9 +1,12 @@
 import React from 'react';
+import ListContainer from '../../components/ListContainer/ListContainer';
+import MovieView from '../../components/MovieView/MovieView';
 
 const FilmDetailsPage = () => {
   return (
     <div>
-      <h1>Film Details</h1>
+      <MovieView />
+      <ListContainer />
     </div>
   );
 };

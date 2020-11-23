@@ -1,0 +1,40 @@
+.mainWrapp {
+  display: flex;
+  margin: 1rem 2rem;
+}
+
+.imgWrapp img {
+  width: 200px;
+  height: 300px;
+}
+
+.titleWrapp {
+  display: flex;
+}
+
+.contentWrapp {
+  padding: 1rem;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.voteAverage {
+  margin-left: 1rem;
+}
+
+.voteAverage span {
+  font-size: 1.3rem;
+  color: #f44336;
+}
+
+.genres {
+  font-size: 0.7rem;
+  margin-top: 1rem;
+}
+
+.releaseDate {
+  color: #f44336;
+  margin: 1rem 0;
+}

@@ -5,11 +5,13 @@ import Portal from '../Portal/Portal';
 import cls from './Modal.scss';
 
 interface IModalProps {
-  title: string;
+  title?: string;
   isOpen: boolean;
   onClose: any;
   onSubmit: any;
   children: any;
+  isEditModal?: boolean;
+  buttonTitle: Array<string>;
 }
 
 const Modal: React.FC<IModalProps> = ({
@@ -18,6 +20,8 @@ const Modal: React.FC<IModalProps> = ({
   onClose,
   onSubmit,
   children,
+  isEditModal,
+  buttonTitle,
 }) => {
   return (
     <>
@@ -31,7 +35,14 @@ const Modal: React.FC<IModalProps> = ({
               </div>
               <div className={cls.modalBody}>{children}</div>
               <div className={cls.modalFooter}>
-                <button onClick={onSubmit}>confirm</button>
+                <button className={cls.buttonCancel} onClick={onSubmit}>
+                  {buttonTitle[0]}
+                </button>
+                {isEditModal && (
+                  <button className={cls.buttonSubmit} onClick={onSubmit}>
+                    {buttonTitle[1]}
+                  </button>
+                )}
               </div>
             </div>
           </div>

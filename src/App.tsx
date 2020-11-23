@@ -22,8 +22,7 @@ const App = () => {
           <Switch>
             <Route path="/" component={HomePage} exact />
             <Route path="/search/:searchParams" component={HomePage} />
-            <Route path="/films/:id" component={FilmDetailsPage} />
-            <Route render={() => <h1>NO FOUND</h1>} />
+            <Route path="/" render={() => <h1>NO FOUND</h1>} />
           </Switch>
         </main>
         <Footer />

@@ -19,15 +19,17 @@ const ListContainer = () => {
   const movieList = useSelector((state: any) => state.movieList);
   const optionsList = useSelector((state: any) => state.settings);
   const searchParams = useSelector((state: any) => state.search);
+  const movieDelete = useSelector((state: any) => state.movieDelete);
 
   const { loading, error, movies } = movieList;
-
+  const { success: successDelete } = movieDelete;
   const { data = [] } = movies;
   const { tab } = tabSortOptions;
 
   useEffect(() => {
+    console.log('deleteMovie', movieDelete);
     dispatch(getMovies({ ...optionsList, ...searchParams }));
-  }, [optionsList]);
+  }, [optionsList, successDelete]);
 
   return (
     <>
