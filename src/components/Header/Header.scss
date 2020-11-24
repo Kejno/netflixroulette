@@ -1,5 +1,7 @@
 .Container {
   position: relative;
+  display: flex;
+  justify-content: space-between;
   bottom: 0;
   width: 100%;
   padding: 1rem;
@@ -12,4 +14,19 @@ span {
 
 .netflix {
   font-weight: 700;
+}
+
+.addMovie {
+  border: none;
+  outline: none;
+  background-color: #666666;
+  color: #f44336;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.addMovie:hover {
+  color: #ffffff;
+  transition: all 0.5s;
+  border-radius: 5px;
 }

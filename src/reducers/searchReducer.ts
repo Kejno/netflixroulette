@@ -1,5 +1,6 @@
 import {
   IS_VISIBLE_SEARCHBAR,
+  IS_UNVISIBLE_SEARCHBAR,
   SEARCH_PARAMS,
 } from '../constants/optionsConstants';
 
@@ -24,6 +25,8 @@ export const isVisibleSearchBarReducer = (
   switch (action.type) {
     case IS_VISIBLE_SEARCHBAR:
       return { ...state, isVisible: true };
+    case IS_UNVISIBLE_SEARCHBAR:
+      return { ...state, isVisible: false };
     default:
       return state;
   }

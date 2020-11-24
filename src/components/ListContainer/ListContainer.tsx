@@ -20,16 +20,20 @@ const ListContainer = () => {
   const optionsList = useSelector((state: any) => state.settings);
   const searchParams = useSelector((state: any) => state.search);
   const movieDelete = useSelector((state: any) => state.movieDelete);
+  const movieUpdate = useSelector((state: any) => state.movieUpdate);
+  const movieCreate = useSelector((state: any) => state.movieCreate);
 
   const { loading, error, movies } = movieList;
   const { success: successDelete } = movieDelete;
+  const { success: successUpdate } = movieUpdate;
+  const { success: successCreate } = movieCreate;
+
   const { data = [] } = movies;
   const { tab } = tabSortOptions;
 
   useEffect(() => {
-    console.log('deleteMovie', movieDelete);
     dispatch(getMovies({ ...optionsList, ...searchParams }));
-  }, [optionsList, successDelete]);
+  }, [optionsList, successDelete, successUpdate, successCreate]);
 
   return (
     <>

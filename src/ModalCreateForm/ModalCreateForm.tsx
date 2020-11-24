@@ -1,65 +1,56 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateMovie } from '../../actions/movieActions';
+import { createMovie } from '../actions/movieActions';
 
-import cls from './ModalEditForm.scss';
+import cls from './ModalCreateForm.scss';
 
-const ModalEditForm = () => {
+interface ModalCreateFormProps {
+  closeModalHandler: any;
+}
+
+const ModalCreateForm: React.FC<ModalCreateFormProps> = ({
+  closeModalHandler,
+}) => {
   const dispatch = useDispatch();
 
-  const movieDetails = useSelector((state: any) => state.movieDetails);
-  const movieUpdate = useSelector((state: any) => state.movieUpdate);
+  const movieCreate = useSelector((state: any) => state.movieCreate);
 
   const {
-    loading: loadingUpdate,
-    error: errorUpdate,
-    success: successUpdate,
-  } = movieUpdate;
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+  } = movieCreate;
 
-  const {
-    title,
-    poster_path,
-    release_date,
-    genres,
-    id,
-    overview,
-    runtime,
-  } = movieDetails.movie;
-
-  const [titleNew, setTitle] = useState('');
-  const [releaseDateNew, setReleaseDate] = useState('');
-  const [imageNew, setImage] = useState('');
-  const [genresNEw, setGenres] = useState('');
-  const [overviewNew, setOverview] = useState('');
-  const [runtimeNEw, setRuntime] = useState(0);
-
-  useEffect(() => {
-    setTitle(title),
-      setReleaseDate(release_date),
-      setImage(poster_path),
-      setGenres(genres),
-      setOverview(overview),
-      setRuntime(runtime);
-  }, [movieDetails]);
+  const [title, setTitle] = useState('');
+  const [releaseDate, setReleaseDate] = useState('');
+  const [image, setImage] = useState('');
+  const [genres, setGenres] = useState(['comedy']);
+  const [overview, setOverview] = useState('');
+  const [runtime, setRuntime] = useState(0);
 
   const newMovie = {
-    id,
-    title: titleNew,
-    release_date: releaseDateNew,
-    poster_path: imageNew,
-    genres: genresNEw,
-    overview: overviewNew,
-    runtime: runtimeNEw,
+    title,
+    release_date: releaseDate,
+    poster_path: image,
+    genres,
+    overview,
+    runtime,
+  };
+
+  useEffect(() => {
+    if (successCreate) {
+      closeModalHandler();
+    }
+  }, [successCreate]);
+
+  const createMovieHandler = () => {
+    dispatch(createMovie(newMovie));
   };
 
   return (
     <>
-      {errorUpdate && alert(errorUpdate)}
       <div className={cls.mainWrapp}>
-        <div className={cls.itemWrapp}>
-          <div className={cls.itemTitle}>Movie ID</div>
-          <div className={cls.movieId}>{id}</div>
-        </div>
+        <div className={cls.itemWrapp}></div>
         <div className={cls.itemWrapp}>
           <label className={cls.itemTitle} htmlFor={cls.title}>
             Title
@@ -80,7 +71,7 @@ const ModalEditForm = () => {
             id={cls.releaseDate}
             name="release_date"
             type="date"
-            defaultValue={release_date}
+            defaultValue={releaseDate}
             onChange={(e) => setReleaseDate(e.target.value)}
             required
           />
@@ -93,7 +84,7 @@ const ModalEditForm = () => {
             id={cls.movie}
             name="poster_path"
             type="text"
-            defaultValue={poster_path}
+            defaultValue={image}
             onChange={(e) => setImage(e.target.value)}
           />
         </div>
@@ -136,17 +127,10 @@ const ModalEditForm = () => {
           />
         </div>
         <button>Reset</button>
-        <button
-          onClick={() => {
-            console.log('newMovie', newMovie);
-            dispatch(updateMovie(newMovie));
-          }}
-        >
-          Save
-        </button>
+        <button onClick={createMovieHandler}>Save</button>
       </div>
     </>
   );
 };
 
-export default ModalEditForm;
+export default ModalCreateForm;

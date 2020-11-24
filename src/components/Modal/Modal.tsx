@@ -7,22 +7,12 @@ import cls from './Modal.scss';
 interface IModalProps {
   title?: string;
   isOpen: boolean;
-  onClose: any;
-  onSubmit: any;
+  onClose?: any;
   children: any;
   isEditModal?: boolean;
-  buttonTitle: Array<string>;
 }
 
-const Modal: React.FC<IModalProps> = ({
-  title,
-  isOpen,
-  onClose,
-  onSubmit,
-  children,
-  isEditModal,
-  buttonTitle,
-}) => {
+const Modal: React.FC<IModalProps> = ({ title, isOpen, onClose, children }) => {
   return (
     <>
       {isOpen && (
@@ -34,16 +24,7 @@ const Modal: React.FC<IModalProps> = ({
                 <div className={cls.modalClose} onClick={onClose}></div>
               </div>
               <div className={cls.modalBody}>{children}</div>
-              <div className={cls.modalFooter}>
-                <button className={cls.buttonCancel} onClick={onSubmit}>
-                  {buttonTitle[0]}
-                </button>
-                {isEditModal && (
-                  <button className={cls.buttonSubmit} onClick={onSubmit}>
-                    {buttonTitle[1]}
-                  </button>
-                )}
-              </div>
+              <div className={cls.modalFooter}></div>
             </div>
           </div>
         </Portal>

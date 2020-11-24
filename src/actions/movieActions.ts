@@ -14,6 +14,9 @@ import {
   MOVIE_DETAILS_SUCCESS,
   MOVIE_DETAILS_FAIL,
   MOVIE_UPDATE_FAIL,
+  MOVIE_CREATE_REQUEST,
+  MOVIE_CREATE_SUCCESS,
+  MOVIE_CREATE_FAIL,
 } from '../constants/movieConstants';
 
 export const getMovies = (opts: any = {}) => async (dispatch: any) => {
@@ -66,7 +69,17 @@ export const deleteMovie = (id: number) => async (dispatch: any) => {
   }
 };
 
-export const updateMovie = (movie: any) => async (dispatch: any) => {
+type movieType = {
+  id?: any;
+  title: string;
+  release_date: string;
+  poster_path: string;
+  overview: string;
+  genres?: Array<string> | string;
+  runtime: number;
+};
+
+export const updateMovie = (movie: movieType) => async (dispatch: any) => {
   try {
     dispatch({
       type: MOVIE_UPDATE_REQUEST,
@@ -90,6 +103,34 @@ export const updateMovie = (movie: any) => async (dispatch: any) => {
 
     dispatch({
       type: MOVIE_UPDATE_FAIL,
+      payload: message,
+    });
+  }
+};
+
+export const createMovie = (movie: movieType) => async (dispatch: any) => {
+  try {
+    dispatch({
+      type: MOVIE_CREATE_REQUEST,
+    });
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const { data } = await axios.post(`${BASE_URL}/movies`, movie, config);
+
+    dispatch({
+      type: MOVIE_CREATE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    const message = error.message;
+
+    dispatch({
+      type: MOVIE_CREATE_FAIL,
       payload: message,
     });
   }

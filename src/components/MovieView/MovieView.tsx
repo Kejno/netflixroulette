@@ -1,9 +1,13 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import searchPath from '../../assets/search.png';
+import { isUnVisibleSearchBar } from '../../actions/searchActions';
 
 import cls from './MovieView.scss';
 
 const MovieView = () => {
+  const dispatch = useDispatch();
+
   const movieDetails = useSelector((state: any) => state.movieDetails);
 
   const {
@@ -33,6 +37,11 @@ const MovieView = () => {
         </div>
         <div className={cls.overview}>{overview}</div>
       </div>
+      <img
+        className={cls.searchIcon}
+        src={searchPath}
+        onClick={() => dispatch(isUnVisibleSearchBar())}
+      />
     </div>
   );
 };

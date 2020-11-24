@@ -10,6 +10,7 @@ import {
   movieDeleteReducer,
   movieDetailsReducer,
   movieUpdateReducer,
+  movieCreateReducer,
 } from './reducers/movieReducer';
 import { settingsReducer } from './reducers/settingsReducer';
 
@@ -22,6 +23,7 @@ const reducer = combineReducers({
   movieDetails: movieDetailsReducer,
   movieDelete: movieDeleteReducer,
   movieUpdate: movieUpdateReducer,
+  movieCreate: movieCreateReducer,
   isVisibleSearch: isVisibleSearchBarReducer,
 });
 

@@ -1,4 +1,14 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 .mainContainer {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #666666;
+  max-width: 96vw;
+}
+
+.main {
+  padding: 0 10px;
 }

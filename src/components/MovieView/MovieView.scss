@@ -1,6 +1,15 @@
 .mainWrapp {
+  position: relative;
   display: flex;
   margin: 1rem 2rem;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 
 .imgWrapp img {

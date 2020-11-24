@@ -18,7 +18,7 @@ const App = () => {
     <div className={cls.mainContainer}>
       <Router>
         <Header />
-        <main>
+        <main className={cls.main}>
           <Switch>
             <Route path="/" component={HomePage} exact />
             <Route path="/search/:searchParams" component={HomePage} />

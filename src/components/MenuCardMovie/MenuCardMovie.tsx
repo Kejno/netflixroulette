@@ -22,23 +22,12 @@ const MenuCardMovie: React.FC<MenuCardMovieProps> = ({
 }) => {
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
-  const [title, setTitle] = useState('');
-  const [releaseDate, setReleaseDate] = useState('');
-  const [image, setImage] = useState('');
-  const [genres, setGenres] = useState([]);
-  const [overview, setOverview] = useState('');
-  const [runtime, setRuntime] = useState(0);
 
   const dispatch = useDispatch();
 
   const deteleMovieItem = async () => {
     dispatch(deleteMovie(id));
     setIsModalDeleteOpen(false);
-  };
-
-  const updateMovieHandle = async () => {
-    // https://image.tmdb.org/t/p/w500/yUOJHa9XmB1H0iYodG9Kb3YCc9T.jpg
-    //dispatch(updateMovie(newMovie));
   };
 
   const onCloseDeleteModal = () => {
@@ -55,19 +44,22 @@ const MenuCardMovie: React.FC<MenuCardMovieProps> = ({
   return (
     <div className={cls.menuCardWrapper}>
       <Modal
-        buttonTitle={['confirm']}
         title="Delete movie"
         isOpen={isModalDeleteOpen}
         onClose={onToggleMenuCard}
-        onSubmit={deteleMovieItem}
-        children={<div>You are sure you want to delete this movie?</div>}
+        children={
+          <div style={{ width: '200px', height: '150px' }}>
+            <div style={{ color: '#ffffff' }}>
+              You are sure you want to delete this movie?
+            </div>
+            <button onClick={deteleMovieItem}>confirn</button>
+          </div>
+        }
       />
       <Modal
-        buttonTitle={['reset', 'save']}
         isEditModal={true}
         isOpen={isModalEditOpen}
         onClose={onToggleMenuCard}
-        onSubmit={updateMovieHandle}
         children={<ModalEditForm />}
       />
       <div className={cls.menuCardClose} onClick={onToggleMenuCard}></div>
