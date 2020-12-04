@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import MenuCardMovie from '../MenuCardMovie/MenuCardMovie';
-import { movieDetails } from '../../actions/movieActions';
-import { isVisibleSearchBar } from '../../actions/searchActions';
 
 import cls from './MovieDetails.scss';
 
 interface MovieDetailsProps {
   movie: any;
+  getMovieById: any;
 }
 
-const MovieDetails: React.FC<MovieDetailsProps> = ({ movie }) => {
+const MovieDetails: React.FC<MovieDetailsProps> = ({ movie, getMovieById }) => {
   const { title, release_date, poster_path, genres, id } = movie;
 
   const [opernMenuCard, setOpenMenuCard] = useState(false);
-
-  const dispatch = useDispatch();
 
   const onToggleMenuCard = () => {
     setOpenMenuCard((state) => !state);
@@ -37,10 +33,7 @@ const MovieDetails: React.FC<MovieDetailsProps> = ({ movie }) => {
         <img
           className={cls.movieImg}
           src={poster_path}
-          onClick={() => {
-            dispatch(isVisibleSearchBar());
-            dispatch(movieDetails(id));
-          }}
+          onClick={() => getMovieById(id)}
         ></img>
       </div>
       <div className={cls.movieTitleWrapp}>

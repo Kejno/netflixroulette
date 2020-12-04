@@ -15,6 +15,9 @@ const ModalCreateForm: React.FC<ModalCreateFormProps> = ({
 
   const movieCreate = useSelector((state: any) => state.movieCreate);
 
+  const optionsList = useSelector((state: any) => state.settings);
+  const searchParams = useSelector((state: any) => state.search);
+
   const {
     loading: loadingCreate,
     error: errorCreate,
@@ -44,7 +47,7 @@ const ModalCreateForm: React.FC<ModalCreateFormProps> = ({
   }, [successCreate]);
 
   const createMovieHandler = () => {
-    dispatch(createMovie(newMovie));
+    dispatch(createMovie(newMovie, { ...optionsList, ...searchParams }));
   };
 
   return (

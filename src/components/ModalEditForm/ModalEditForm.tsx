@@ -10,6 +10,9 @@ const ModalEditForm = () => {
   const movieDetails = useSelector((state: any) => state.movieDetails);
   const movieUpdate = useSelector((state: any) => state.movieUpdate);
 
+  const optionsList = useSelector((state: any) => state.settings);
+  const searchParams = useSelector((state: any) => state.search);
+
   const {
     loading: loadingUpdate,
     error: errorUpdate,
@@ -139,7 +142,9 @@ const ModalEditForm = () => {
         <button
           onClick={() => {
             console.log('newMovie', newMovie);
-            dispatch(updateMovie(newMovie));
+            dispatch(
+              updateMovie(newMovie, { ...optionsList, ...searchParams })
+            );
           }}
         >
           Save

@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListContainer component Test Snapshot & Components should match snapshot 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [MockFunction] {
+        "calls": Array [
+          Array [
+            [Function],
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      },
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <ListContainer>
+    <div
+      className="filterWrapp"
+    >
+      <Tab
+        activeTab=""
+        onChangeTab={[Function]}
+      >
+        <ul
+          className="tabContainer"
+        >
+          <li
+            className="tabItem false"
+            key="0"
+            onClick={[Function]}
+          >
+            ALL
+          </li>
+          <li
+            className="tabItem false"
+            key="1"
+            onClick={[Function]}
+          >
+            DOCUMENTARY
+          </li>
+          <li
+            className="tabItem false"
+            key="2"
+            onClick={[Function]}
+          >
+            COMEDY
+          </li>
+          <li
+            className="tabItem false"
+            key="3"
+            onClick={[Function]}
+          >
+            HORROR
+          </li>
+          <li
+            className="tabItem false"
+            key="4"
+            onClick={[Function]}
+          >
+            CRIME
+          </li>
+        </ul>
+      </Tab>
+      <Sort
+        onChange={[Function]}
+      >
+        <select
+          className="selectSort"
+          name="calc"
+          onChange={[Function]}
+        >
+          <option
+            className="optionSort"
+            key="0"
+            value="release_date"
+          >
+            RELEASE DATE
+          </option>
+          <option
+            className="optionSort"
+            key="1"
+            value="vote_average"
+          >
+            VOTE AVERAGE
+          </option>
+        </select>
+      </Sort>
+    </div>
+    <MovieList
+      getMovieById={[Function]}
+      movies={Array []}
+    >
+      <div
+        className="movieListContainer"
+      />
+    </MovieList>
+  </ListContainer>
+</Provider>
+`;

@@ -23,10 +23,13 @@ const MenuCardMovie: React.FC<MenuCardMovieProps> = ({
   const [isModalDeleteOpen, setIsModalDeleteOpen] = useState(false);
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
 
+  const optionsList = useSelector((state: any) => state.settings);
+  const searchParams = useSelector((state: any) => state.search);
+
   const dispatch = useDispatch();
 
   const deteleMovieItem = async () => {
-    dispatch(deleteMovie(id));
+    dispatch(deleteMovie(id, { ...optionsList, ...searchParams }));
     setIsModalDeleteOpen(false);
   };
 

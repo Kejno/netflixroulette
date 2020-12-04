@@ -16,7 +16,7 @@ import { settingsReducer } from './reducers/settingsReducer';
 
 const middleware = [thunk];
 
-const reducer = combineReducers({
+export const reducer = combineReducers({
   movieList: movieListReducer,
   settings: settingsReducer,
   search: searchReducer,
@@ -27,12 +27,16 @@ const reducer = combineReducers({
   isVisibleSearch: isVisibleSearchBarReducer,
 });
 
-const initialState = {};
+const InitialState = () => {
+  return {};
+};
+
+export const initialState = {};
 
 const store = createStore(
   reducer,
   initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
+  applyMiddleware(...middleware)
 );
 store.subscribe(() => {
   console.log('Subscribe', store.getState());

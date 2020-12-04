@@ -54,13 +54,17 @@ export const movieDetails = (id: number) => async (dispatch: any) => {
   }
 };
 
-export const deleteMovie = (id: number) => async (dispatch: any) => {
+export const deleteMovie = (id: number, opts: any = {}) => async (
+  dispatch: any
+) => {
   try {
     dispatch({ type: MOVIE_DELETE_REQUEST });
 
     await axios.delete(`${BASE_URL}/movies/${id.toString()}`);
 
     dispatch({ type: MOVIE_DELETE_SUCCESS });
+
+    dispatch(getMovies(opts));
   } catch (error) {
     dispatch({
       type: MOVIE_DELETE_FAIL,
@@ -79,7 +83,9 @@ type movieType = {
   runtime: number;
 };
 
-export const updateMovie = (movie: movieType) => async (dispatch: any) => {
+export const updateMovie = (movie: movieType, opts: any = {}) => async (
+  dispatch: any
+) => {
   try {
     dispatch({
       type: MOVIE_UPDATE_REQUEST,
@@ -97,7 +103,10 @@ export const updateMovie = (movie: movieType) => async (dispatch: any) => {
       type: MOVIE_UPDATE_SUCCESS,
       payload: data,
     });
+
     dispatch({ type: MOVIE_DETAILS_SUCCESS, payload: data });
+
+    dispatch(getMovies(opts));
   } catch (error) {
     const message = error.message;
 
@@ -108,7 +117,9 @@ export const updateMovie = (movie: movieType) => async (dispatch: any) => {
   }
 };
 
-export const createMovie = (movie: movieType) => async (dispatch: any) => {
+export const createMovie = (movie: movieType, opts: any = {}) => async (
+  dispatch: any
+) => {
   try {
     dispatch({
       type: MOVIE_CREATE_REQUEST,
@@ -133,5 +144,7 @@ export const createMovie = (movie: movieType) => async (dispatch: any) => {
       type: MOVIE_CREATE_FAIL,
       payload: message,
     });
+
+    dispatch(getMovies(opts));
   }
 };

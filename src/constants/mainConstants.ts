@@ -11,3 +11,31 @@ export const tabSortOptions: any = {
   },
   sortOrder: ['asc', 'desc'],
 };
+
+export const initialState = {
+  movieList: {
+    movies: [{}],
+  },
+  settings: {
+    sortBy: 'release_date',
+    filter: '',
+    sortOrder: 'desc',
+  },
+  search: {
+    searchBy: 'title',
+    search: '',
+  },
+  movieDetails: {
+    movie: {
+      genres: [''],
+    },
+  },
+  movieDelete: {},
+  movieUpdate: {
+    movie: {},
+  },
+  movieCreate: {},
+  isVisibleSearch: {
+    isVisible: false,
+  },
+};
